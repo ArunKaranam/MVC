@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -  Application</title>
+    @Styles.Render("~/Content/css")
+
+    <link href="~/Content/toastr.css" rel="stylesheet" /> 
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body >
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <ul class="nav navbar-nav navbar-left">
+
+            <li>
+                <a href="@Url.Action("HomePage", "Home")">
+
+                    <span class="glyphicon glyphicon-home"></span>
+                    Home
+                </a>
+
+
+            </li>
+
+
+
+            <li>
+                <a href="@Url.Action("Contact", "Home")">
+
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    Contact
+                </a>
+
+
+            </li>
+
+
+
+        </ul>
+
+
+
+
+
+
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+
+
+
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-left">
+
+
+
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+
+
+                        if (User.IsInRole("admin"))
+                        {
+                            <li>
+                                <a href="@Url.Action("AdminDashBoard", "Admin")">
+
+                                    <span class="glyphicon glyphicon-th-large"></span>
+
+                                </a>
+
+
+                            </li>
+
+
+
+
+                            <li>@Html.ActionLink("Hospitals", "HospitalApprovel", "Admin")</li>
+                            <li>@Html.ActionLink("Feedbacks", "Index", "FeedBacks")</li>
+
+
+                        }
+
+                        if (User.IsInRole("doctor"))
+                        {
+
+                            <li>
+                                <a href="@Url.Action("DoctorDashboard", "Doctors")">
+
+                                    <span class="glyphicon glyphicon-th-large"></span>
+
+                                </a>
+
+
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li>@Html.ActionLink("Edit profile", "EditDoctor", "Doctors")</li>
+
+
+
+
+
+
+                            <li>
+                                <a href=" #" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Shedule<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+
+                                    <li>@Html.ActionLink("Update Availability", "DoctorShedule", "Doctors")</li>
+                                    <li>@Html.ActionLink("ReUpdate Availability", "ReShedule", "Doctors")</li>
+                                    <li>@Html.ActionLink("Shedule From Hospital", "sheduleFrom", "Doctors")</li>
+
+                                </ul>
+
+                            </li>
+
+                            <li>
+                                <a href=" #" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Appointments<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+
+                                    <li>@Html.ActionLink("New Appointment", "NewAppointment", "Doctors")</li>
+                                    <li>@Html.ActionLink("Appoimtment approved", "ApprovedAppointment", "Doctors")</li>
+
+                                </ul>
+
+                            </li>
+
+                            <li>@Html.ActionLink("Patient Record", "medicalRecord", "Doctors")</li>
+
+
+
+
+
+
+                        }
+
+                        if (User.IsInRole("patient"))
+                        {
+
+
+
+                            @*<li>@Html.ActionLink("Download", "Download", "Patients")</li>*@
+
+
+                            <li>
+                                <a href="@Url.Action("PatientDashBoard", "Patients")">
+
+                                    <span class="glyphicon glyphicon-th-large"></span>
+
+                                </a>
+
+
+                            </li>
+
+
+
+
+                            <li>
+                                <a href="@Url.Action("Download", "Patients")">
+
+                                    <span class="glyphicon glyphicon-download-alt"></span>
+                                    Download Report
+                                </a>
+
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li>
+                                <a href="@Url.Action("search", "Patients")">
+
+                                    <span class=" glyphicon glyphicon-search"></span>
+                                    Book Appointment
+                                </a>
+
+                            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <li>
+                                <a href="@Url.Action("Create", "FeedBacks")">
+
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                    FeedBack
+                                </a>
+                            </li>
+
+
+
+
+                        }
+
+                        if (User.IsInRole("hospitaladmin"))
+                        {
+
+
+
+
+
+
+                            <li>
+                                <a href="@Url.Action("HospitalAdminDashboard", "HospitalAdminSchedules")">
+
+                                    <span class="glyphicon glyphicon-th-large"></span>
+
+                                </a>
+
+
+                            </li>
+
+
+
+
+
+                            <li>@Html.ActionLink("SheduleDoctor", "GetDoctors", "HospitalAdminSchedules")</li>
+                            <li>@Html.ActionLink("Sheduled List", "AdminShedule", "HospitalAdminSchedules")</li>
+
+
+
+                        }
+
+
+
+                    }
+
+
+
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+
+
+
+
+
+
+                        <li>
+                            <a href=" #" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-exclamation-sign"></span>Help<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <li>@Html.ActionLink("Show Issues", "Index", "Helps")</li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Raise a ticket", "Create", "Helps")</li>
+                                    <li>@Html.ActionLink("Resolution ", "helptouser", "Helps")</li>
+                                }
+                            </ul>
+
+                        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <li>
+                            <a>
+
+                                Welcome-
+                                <span class="glyphicon glyphicon-user"></span>
+                                @User.Identity.Name
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("LogOut", "Account")">
+
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                Logout
+                            </a>
+                        </li>
+
+
+
+
+
+
+                    }
+                    else
+                    {
+
+                        <!--<-->@*li>
+                                <a href="@Url.Action("", "")">
+
+                                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                    Help
+                                </a>
+                            </li>*@
+
+
+
+
+
+
+
+
+                        <li>
+                            <a href="@Url.Action("SignUp", "Account")">
+
+                                <span class="glyphicon glyphicon-new-window"></span>
+                                Signup
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="@Url.Action("Login", "Account")">
+
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                Login
+                            </a>
+                        </li>
+
+
+
+
+
+
+
+
+
+                    }
+
+
+
+
+
+                </ul>
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="container body-content">
+        @RenderBody()
+
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Today - One Stop Shop For Medical Tourism Application</p>
+            </footer>
+        }
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Scripts/toastr.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+
+     @RenderSection("scripts", required: false)
+</body>
+</html>

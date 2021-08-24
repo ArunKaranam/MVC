@@ -1,0 +1,170 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<MVCProject.Models.HospitalAdmin>
+
+@{
+    ViewBag.Title = "HospitalApprovel";
+}
+
+<h2>HospitalApproval</h2>
+
+
+    <table class="table table-hover">
+        <tr class="thead-">
+            <th>
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Certification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().SuccessfulOperation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Achievements)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Speciality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Facilities)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Treatment)
+            </th>
+
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+
+
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+     <tr>
+         <td>
+            
+             @Html.ActionLink(item.Name, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure want to Approve?')" })
+         </td>
+         <td>
+           
+             @Html.ActionLink(item.Address, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure want to Approve?')" })
+         </td>
+         <td>
+             
+             @Html.ActionLink(item.City, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure want to Approve?')" })
+         </td>
+         <td>
+            
+             @Html.ActionLink(item.State, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure want to Approve?')" })
+         </td>
+         <td>
+            
+             @Html.ActionLink(item.ZipCode.ToString(), "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+         </td>
+         <td>
+             
+             @Html.ActionLink(item.Certification, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+         </td>
+         <td>
+             
+             @Html.ActionLink(item.SuccessfulOperation, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+         </td>
+         <td>
+             
+             @Html.ActionLink(item.Achievements, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure you want  to Approve?')" })
+         </td>
+         <td>
+             
+             @Html.ActionLink(item.Speciality, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure you want  to Approve?')" })
+         </td>
+         <td>
+            
+             @Html.ActionLink(item.Facilities, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure  you want  to Approve?')" })
+         </td>
+         <td>
+            
+             @Html.ActionLink(item.Treatment, "Update", new { id = item.H_Id }, new { onclick = "return pop('Are you sure you want  to Approve?')" })
+         </td>
+
+
+
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Approved)
+        </td>
+        <td>
+            @if (item.Approved == true)
+            {
+                <span>  Approved </span>
+            }
+            
+
+            @if (item.Approved == false)
+            {
+                <span> Pending </span>
+            }
+            
+
+        </td>
+
+
+
+
+
+
+
+
+          
+            @*<td>
+                @Html.ActionLink("Delete from Db", "Reject", new { id = item.H_Id })
+            </td>*@
+    </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, Page => Url.Action("AdminIndex", new { Page }))
+
+
+<div>
+
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert('@TempData["Message"]');
+              };
+        </script>
+
+    }
+    <script type="text/javascript">
+        function pop(txt) {
+            if (confirm(txt))
+                return true;
+            else
+                return false;
+        }
+    </script>
+
+
+
+
+
+</div>

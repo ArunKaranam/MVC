@@ -1,0 +1,155 @@
+﻿@model MVCProject.Models.Appointment
+
+@{
+    ViewBag.Title = "Appointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/toastr.css" rel="stylesheet" />
+
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            setInterval(
+                function () {
+                    $('#msg').hide();
+                },
+                10000);
+        });
+    </script>*@
+
+<h2>Appointment</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.P_Id, "Patient name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("P_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.P_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.H_Id, "Hospital name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("H_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.H_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.D_Id, "Doctor name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("D_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.D_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Book Here" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div id="msg">
+        @if (@TempData["noslot"] != null)
+        {
+            <h2 style="color: #005580;">  @TempData["noslot"]</h2>
+        }
+    </div>*@
+
+
+@if (TempData["noslot"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+               @* alert('@TempData["Message"]');*@
+
+                @*toastr.warning('@TempData["noslot"]', 'Information Alert', { timeOut: 20000, "closeButton": true});*@
+
+                Swal.fire(
+                    'Alert',
+                    '@TempData["noslot"]',
+                    'please kindly check'
+                )
+
+
+
+
+              };
+    </script>
+
+
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (TempData["appointment"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+
+            Swal.fire(
+                'Successfull',
+                '@TempData["appointment"]',
+                'please kindly check'
+            )
+
+
+
+
+
+        };
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="~/Scripts/toastr.js"></script>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+}
+
+<html>
+<head>
+
+    <title>
+        this is bootstrap demo
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/Photo/heart.jpg" alt="Los Angeles" width="500" height="500">
+                    <div class="carousel-caption">
+                        <h3>Los Angeles</h3>
+                        <p>We had such a great time in LA!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Photo/doctors.jpg" alt="Chicago" width="500" height="500">
+                    <div class="carousel-caption">
+                        <h3>Chicago</h3>
+                        <p>Thank you, Chicago!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Photo/man.jpg" alt="New York" width="500" height="500">
+                    <div class="carousel-caption">
+                        <h3>New York</h3>
+                        <p>We love the Big Apple!</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+
+
+
+    </header>
+    <section>
+        <div class="container">
+            <h1 class="text-center text-capitalize pt-5">about us</h1>
+            <hr class="w-25 mx-auto pt-5">
+            <div class="row mb-5">
+                <div class="col-lg-6 col-md-6 col-sd-4">
+                    <img src="~/Photo/about.jpg" class="img-fluid" />
+                </div>
+                <div class="col-lg-6 col-md-6 col-sd-4">
+                    <h1>Who am I</h1>
+                    <hr>
+                    <p>
+                        .container has a max width pixel value, whereas .container-fluid is max-width 100%.
+                        .container-fluid continuously resizes as you change the width of your window/browser by any amount.
+                        .container resizes in chunks at several certain widths, controlled by media queries (technically we can say it’s “fixed width” because pixels values are specified, but if you stop there, people may get the impression that it can’t change size – i.e. not responsive.)
+                        When using .container-fluid because the witdh is related to the viewport width the display is dynamic
+                        Use .container-fluid when you want your page to shapeshift with every little difference in its viewport size.
+                        Use .container when you want your page to shapeshift to only 5 kinds of sizes, which are also known as "breakpoints".
+                    </p>
+                    <button class="btn bg-primary text-white">Wanna Know Me</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <section class="bg-primary">
+        <article class="py-5 text-center text-white">
+            <div>
+                <h3 class="display-4 text">+91 1234567896  </h3>
+                <p> If you want services , call us now </p>
+                <button type="button" class="btn btn-warning">
+                    Contact Now<span class="badge badge-pill badge-light">BADGE DEMO</span>
+                </button>
+            </div>
+        </article>
+
+    </section>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+
+</html>
+

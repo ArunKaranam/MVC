@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MVCProject.Models.HospitalAdminSchedule>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayName("Doctor Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HospitalAdmin.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.E_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Purpose)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctor.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HospitalAdmin.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.E_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Purpose)
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,68 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<MVCProject.Models.Patient>
+
+@{
+    ViewBag.Title = "Patientslist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Dob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ContactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.First().RoleName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleName)
+        </td>
+        
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model,Page=>Url.Action("Patientslist",new { Page}))

@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewBag.Title = "board";
+}
+
+<h2>board</h2>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+
+    <style>
+        .row {
+            width: 100%;
+            margin-block: auto;
+        }
+
+        .card {
+            width: 15%;
+            height: 150px;
+            float: left;
+            margin-bottom: 50px;
+            margin-right: 20px;
+            margin-left: 40px;
+            margin-top: 10px;
+        }
+
+        .card-img-top {
+            width: 95%;
+            height: 100%;
+        }
+
+        .card-text {
+            text-align: center;
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        .w3-teal, .w3-hover-teal:hover {
+            color: #000000 !important;
+            background-color: #faf9f5 !important;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            background-color: #009688;
+            height: 15px;
+            font-size: 0.5em;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+        }
+    </style>
+</head>
+<body style="background-color: #faf9f5!important">
+
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none;margin-top:unset;background-color: #faf9f5" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large"
+                onclick="w3_close()">
+            Close &times;
+        </button>
+        <ul>
+            <li>
+                @Html.ActionLink("Registeration Requests", "ViewRegistrationRequest")
+            </li>
+            <li>
+                @Html.ActionLink("Claim Requests", "ViewClaimRequest")
+            </li>
+            <li>
+                @Html.ActionLink("Notifications", "DisplayNotifications")
+            </li>
+            <li>
+                @Html.ActionLink("Review Questionnaire", "ReviewQuestionnaireList")
+            </li>
+            <li>
+                @Html.ActionLink("Display Maturity Information", "DisplayMaturityInfo")
+            </li>
+            <li>
+                @Html.ActionLink("DisplayIssues", "DisplayIssues")
+            </li>
+
+        </ul>
+    </div>
+
+    <div id="main" style="margin-top:0px;display:block">
+
+
+
+        <div class="w3-teal" id="abcd">
+            <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+            <div class="w3-container">
+            </div>
+        </div>
+
+
+
+
+
+        <div class="w3-container">
+
+
+            <div class="row">
+                <div class="card col-sm-12 col-md-4">
+                    <a href="/Admin/ViewRegistrationRequest"><img class="card-img-top" src="~/Photo/registration.png" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <p class="card-text">@Html.ActionLink("Registeration Requests", "ViewRegistrationRequest")</p>
+                    </div>
+                </div>
+                <div class="card col-sm-12 col-md-4">
+                    <a href="/Admin/DisplayNotifications"><img class="card-img-top" src="~/Photo/registration.png" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <p class="card-text"> @Html.ActionLink("Notifications", "DisplayNotifications")</p>
+                    </div>
+                </div>
+                <div class="card col-sm-12 col-md-4">
+                    <a href="/Admin/ReviewQuestionnaireList"><img class="card-img-top" src="~/Photo/registration.png" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <p class="card-text">@Html.ActionLink("Review Questionnaire", "ReviewQuestionnaireList")</p>
+                    </div>
+                </div>
+                <div class="card col-sm-12 col-md-4">
+                    <a href="/Admin/ViewClaimRequest"><img class="card-img-top" src="~/Photo/registration.png" alt="Card image cap"></a>
+                    <div class="card-body">
+                        <p class="card-text ">@Html.ActionLink("Claim Requests", "ViewClaimRequest")</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+            document.getElementById("abcd").style.backgroundColor = "Red";
+        }
+    </script>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+   @* @RenderSection("scripts", required: false)*@
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

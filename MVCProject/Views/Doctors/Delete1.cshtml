@@ -1,0 +1,77 @@
+﻿@model MVCProject.Models.DoctorUpdate
+
+@{
+    ViewBag.Title = "Delete1";
+}
+
+<h2>Delete1</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DoctorUpdate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Doctor Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorAndSpecialist.Specialists)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorAndSpecialist.Specialists)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HospitalAdmin.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HospitalAdmin.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.E_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.E_Time)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> 
+           
+        </div>
+    }
+</div>
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}

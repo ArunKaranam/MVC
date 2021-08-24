@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MVCProject.Models.Appointment>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayName("Doctor Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HospitalAdmin.Name)
+        </th>
+        <th>
+            @Html.DisplayName("Patient Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                @Html.ActionLink(item.Doctor.FirstName, "NewAppointmentAprovel", new { id = item.App_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+            </td>
+            <td>
+
+                @Html.ActionLink(item.HospitalAdmin.Name, "NewAppointmentAprovel", new { id = item.App_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+            </td>
+            <td>
+
+                @Html.ActionLink(item.Patient.FirstName, "NewAppointmentAprovel", new { id = item.App_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+            </td>
+            <td>
+
+                @Html.ActionLink(item.Date.ToString(), "NewAppointmentAprovel", new { id = item.App_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+            </td>
+            <td>
+
+                @Html.ActionLink(item.Time.ToString(), "NewAppointmentAprovel", new { id = item.App_Id }, new { onclick = "return pop('Are you sure you want to Approve?')" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+                @* @Html.ActionLink(item.Status.ToString(), "NewAppointmentAprovel", new { id = item.App_Id })*@
+            </td>
+            <td>
+
+                @if (item.Status == false)
+                {
+                    <span>Pending</span>
+                }
+
+            </td>
+
+        </tr>
+    }
+
+</table>
+<script type="text/javascript">
+        function pop(txt) {
+            if (confirm(txt))
+                return true;
+            else
+                return false;
+        }
+</script>

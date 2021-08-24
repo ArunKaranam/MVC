@@ -1,0 +1,64 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<MVCProject.Models.DoctorUpdate>
+
+@{
+    ViewBag.Title = "GetDoctors";
+}
+
+
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayName("Doctor Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DoctorAndSpecialist.Specialists)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().HospitalAdmin.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().S_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().E_Time)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doctor.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoctorAndSpecialist.Specialists)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HospitalAdmin.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.E_Time)
+        </td>
+        <td>
+            @Html.ActionLink("Shedule", "Shedule", new { id = item.Up_Id }, new { @class = "btn btn-info" }) 
+
+            @Html.ActionLink("IsShedule?", "IsShedule", new { id = item.Up_Id }, new { @class = "btn btn-info" })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, Page=>Url.Action("GetDoctor", new { Page}))

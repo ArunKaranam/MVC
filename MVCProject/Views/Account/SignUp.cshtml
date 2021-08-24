@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+<style>
+
+    img.rounded {
+       @* width: 40%;*@
+        border-radius: 50%;
+    }
+
+
+    </style>
+
+<h2>SignUp</h2>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Hospital-Admin </h2>
+        <img src="~/Photo/registration.png" alt="admin" width="250" height="250" class="rounded"/>
+       <h4> @Html.ActionLink("SignUp","HospitalAdminSignUp","Account", new { @class = "btn btn-default" })</h4>
+    </div>
+    <div class="col-md-4">
+        <h2>Doctor </h2>
+        <img src="~/Photo/registration.png" alt="doctor" width=" 250" height="250" class="rounded" />
+        <h4> @Html.ActionLink("SignUp", "DoctorSignUp", "Account", new { @class = "btn btn-default" })</h4>
+
+    </div>
+    <div class="col-md-4">
+        <h2> Patient  </h2>
+        <img src="~/Photo/registration.png" alt="patient" width="250" height="250" class="rounded"/>
+        <h4> @Html.ActionLink("SignUp", "PatientSignUp", "Account", new { @class = "btn btn-default" })</h4>
+
+    </div>
+</div>
+

@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "PatientDashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/toastr.css" rel="stylesheet" />
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        setInterval(
+            function () {
+                $('#msg').hide();
+            },
+            10000);
+    });
+</script>
+
+<div id="msg">
+    @if (TempData["remainder"] != null)
+    {
+
+        <h3 style="color:#005580"> @TempData["remainder"]</h3>
+
+    }
+
+</div>*@
+
+<h2>PatientDashBoard</h2>
+<head>
+    <link href="@Url.Content("~/Content/Background.css")" rel="stylesheet" type="text/css" />
+</head>
+<style>
+
+    .square {
+        float: left;
+        position: relative;
+        width: 20%;
+        padding-bottom: 20%; /* = width for a 1:1 aspect ratio */
+        margin: 1.66%;
+        overflow: hidden;
+    }
+
+    .content {
+        position: absolute;
+        height: 80%; /* = 100% - 2*10% padding */
+        width: 90%; /* = 100% - 2*5% padding */
+        padding: 10% 5%;
+    }
+
+    #msg {
+        float: right;
+    }
+</style>
+
+
+@using (Html.BeginForm())
+{
+    <body background="~/Photo/pro.jpeg">
+
+
+
+
+        <div class="row">
+
+            <div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                <div class="content card card-block w-25 mx-auto">
+                    <span class="	glyphicon glyphicon-modal-window"></span>
+                    <h3 class="card-title" style="margin-top:40px; text-align: center; ">@Html.ActionLink("Donwload Report", "Download", "Patients", new { @class = "btn btn-secondary" })</h3>
+                </div>
+            </div>
+
+            <div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                <div class="content card card-block w-25 mx-auto">
+                    <span class="	glyphicon glyphicon-modal-window"></span>
+                    <h3 class="card-title" style="margin-top:40px; text-align: center; ">@Html.ActionLink("Search Doctors", "search", "Patients", new { @class = "btn btn-secondary" })</h3>
+                </div>
+            </div>
+
+            <div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                <div class="content card card-block w-25 mx-auto">
+                    <span class="	glyphicon glyphicon-modal-window"></span>
+                    <h3 class="card-title" style="margin-top:40px; text-align: center;">@Html.ActionLink("Give FeedBack", "Create", "FeedBacks", new { @class = "btn btn-secondary" })</h3>
+                </div>
+            </div>
+            @* <div class="card">
+                    <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
+                         class="card-img-top"
+                         alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            Some quick example text to build on the card title and make up the bulk of the
+                            card's content.
+                        </p>
+                        <a href="#!" class="btn btn-primary">Button</a>
+                    </div>
+                </div>*@
+
+
+            @*<div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                    <div class="content card card-block w-25 mx-auto">
+                        <h4 class="card-title" style="margin-top:40px; text-align: center;">@Html.ActionLink("View Planes", "Planes", "Admin")</h4>
+                    </div>
+                </div>
+
+                <div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                    <div class="content card card-block w-25 mx-auto">
+                        <h4 class="card-title" style="margin-top:40px; text-align: center;">@Html.ActionLink("Add Hangar", "AddHangar", "Admin")</h4>
+
+                    </div>
+                </div>
+            *@
+            @*<div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                    <div class="content card card-block w-25 mx-auto">
+                        <h4 class="card-title" style="margin-top:40px; text-align: center;">@Html.ActionLink("View Hangars", "Hangars", "Admin")</h4>
+                    </div>
+                </div>
+
+                <div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                    <div class="content card card-block w-25 mx-auto">
+                        <h4 class="card-title" style="margin-top:40px; text-align: center;">@Html.ActionLink("Pilot Schedule", "PilotSchedule", "Admin")</h4>
+                    </div>
+                </div>
+
+                <div class="square" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+                    <div class="content card card-block w-25 mx-auto">
+                        <h4 class="card-title" style="margin-top:40px; text-align: center;">@Html.ActionLink("Reporting", "Reporting", "Admin")</h4>
+                    </div>
+                </div>*@
+
+        </div>
+    </body>
+
+}
+
+@if (TempData["remainder"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+               @* alert('@TempData["Message"]');*@
+
+                toastr.info('@TempData["remainder"]', 'Information Alert', { timeOut: 20000, "closeButton": true});
+              };
+    </script>
+
+
+}
+
+<script src="~/Scripts/toastr.js"></script>
+
+
+
+
+
+
+
+
+
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

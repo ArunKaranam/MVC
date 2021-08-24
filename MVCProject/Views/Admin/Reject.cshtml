@@ -1,0 +1,125 @@
+﻿@model MVCProject.Models.HospitalAdmin
+
+<h3>Are you sure you want to Reject  this?</h3>
+
+
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Certification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Certification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuccessfulOperation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuccessfulOperation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Achievements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Achievements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Speciality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speciality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Facilities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facilities)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Approved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Approved)
+        </dd>
+
+    </dl>
+ 
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Reject" class="btn btn-success" /> 
+
+        </div>
+
+    }
+
+
+<div>
+    @Html.ActionLink("Back to List", "HospitalApprovel")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

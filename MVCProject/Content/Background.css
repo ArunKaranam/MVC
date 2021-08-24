@@ -1,0 +1,18 @@
+﻿body {
+    
+    background-size: cover;
+    /*padding-top:50px;
+    padding-bottom:20px;*/
+   /* background-position: center center;*/
+    background-repeat: no-repeat;
+    /*margin: auto;*/
+}
+
+    body h1 {
+        color:white;
+    }
+
+    body #lorm_text {
+        margin-top: 250px;
+        color: white;
+    }

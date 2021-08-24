@@ -1,0 +1,84 @@
+﻿@model MVCProject.Models.TreatmentReport
+
+@{
+    ViewBag.Title = "Download";
+}
+
+<h2>Download</h2>
+
+<div>
+    <h4>TreatmentReport</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <span class="glyphicon glyphicon-barcode">	</span>
+        </dt>
+        <dd>
+
+        </dd>
+
+
+        <dt>
+            @Html.DisplayName("Doctor Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HospitalDepartment.Department_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HospitalDepartment.Department_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Patient Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientMedicalReport.Diagnosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientMedicalReport.Diagnosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disease)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disease)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Time)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button>@Html.ActionLink("Downlad as PDF", "ConvertToPDF",new { id=Model.P_Id})</button> 
+    
+   
+</p>

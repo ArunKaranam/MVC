@@ -1,0 +1,189 @@
+﻿@model MVCProject.Models.Patient
+
+@{
+    ViewBag.Title = "PatientSignUp";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    
+
+        <h2>PatientSignUp</h2>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Dob, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.RadioButtonFor(model => model.Gender, "Male", new { @class = "form-check-input" }) Male
+                        @Html.RadioButtonFor(model => model.Gender, "FeMale", new { @class = "form-check-input" }) Female
+                        @Html.RadioButtonFor(model => model.Gender, "Other", new { @class = "form-check-input" }) Other
+
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="glyphicon glyphicon-eye-open text-warning" title="show password"></span>
+                        @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.S_Que, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @* @Html.EditorFor(model => model.S_Que, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.DropDownListFor(model => model.S_Que, new List<SelectListItem>() {
+                         new SelectListItem(){ Text="What primary school did you attend?",Value="What primary school did you attend?"},
+                          new SelectListItem(){ Text="What is the name of your first pet?",Value="What is the name of your first pet?"},
+                           new SelectListItem(){ Text="Who was your childhood hero?",Value="Who was your childhood hero?"},
+                           new SelectListItem(){ Text="Where was your best family vacation as a kid?",Value="Where was your best family vacation as a kid?"},
+
+
+
+                       }, "Please Select", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.S_Que, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.S_ANSWER, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.S_ANSWER, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.S_ANSWER, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RoleName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*  @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.DropDownListFor(model => model.RoleName, new List<SelectListItem>() {
+                          new SelectListItem(){ Text="Doctor",Value="doctor"},
+                           new SelectListItem(){ Text="Patient",Value="patient"},
+                            new SelectListItem(){ Text="HospitalAdmin",Value="hospitaladmin"}
+
+
+                       }, "please select", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Register" class="btn btn-success" />
+                        <input type="reset" value="Clear" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            <h4><span>Already have an account?@Html.ActionLink("Login", "Login", "Account", new { @class = "btn btn-info" }) .</span></h4>
+        </div>
+
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+
+    $(document).ready(function () {
+
+        $(".glyphicon").mousedown(function () {
+
+            $("#PassWord").attr("type", "text");
+
+        });
+        $(".glyphicon").mouseup(function () {
+
+            $("#PassWord").attr("type", "password");
+
+        });
+
+
+
+    });
+</script>

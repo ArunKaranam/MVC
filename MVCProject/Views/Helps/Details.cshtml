@@ -1,0 +1,59 @@
+﻿@model MVCProject.Models.Help
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4>Help</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Issue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Issue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Solution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Solution)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.I_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
